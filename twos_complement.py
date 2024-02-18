@@ -1,8 +1,7 @@
 def twos_input(binary: str = None):
     return input("Enter Binary: ") if binary is None else binary
 
-
-def twos_complement(binary_str: str) -> str:
+def validate_binary_string(binary_str) -> int:
     if not set(binary_str).issubset({'0', '1', '.'}):
         raise ValueError("Input must be a binary string")
 
@@ -11,6 +10,12 @@ def twos_complement(binary_str: str) -> str:
     if n == 0:
         raise ValueError("Binary string cannot be empty")
 
+    return n
+
+
+def twos_complement(binary_str: str) -> str:
+
+    n = validate_binary_string(binary_str)
     decimal_position = binary_str.find('.')
 
     # perform 2s complement kung walang decimal point
