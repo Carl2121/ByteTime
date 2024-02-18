@@ -1,16 +1,52 @@
-# This is a sample Python script.
+def main():
+    while True:
+        print("\nMain Menu:")
+        print("1. Binary Operations")
+        print("2. Number System Conversion")
+        print("3. Exit")
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+        choice = input("\nPlease choose an option: ")
 
+        if choice == '1':
+            while True:
+                print("\nMenu-2 (Binary Operations):")
+                print("1. Division")
+                print("2. Multiplication")
+                print("3. Subtraction")
+                print("4. Addition")
+                print("5. Negative (2's Complement)")
+                print("6. Back to Main Menu")
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+                choice = input("\nPlease choose an option: ")
 
+                if choice == '6':
+                    break
+                else:
+                    print("\nYou chose Option", choice)
+                    # code
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+        elif choice == '2':
+            while True:
+                print("\nMenu-3 (Conversion):")
+                print("1. Binary to X")
+                print("2. Decimal to X")
+                print("3. Octal to X")
+                print("4. Hexa to X")
+                print("5. Back to Main Menu")
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+                choice = input("\nPlease choose an option: ")
+
+                if choice == '5':
+                    break
+                else:
+                    print("\nYou chose Option", choice)
+                    # code
+
+        elif choice == '3':
+            print("\nExiting the program.")
+            break
+        else:
+            print("\nInvalid choice. Please choose a valid option.")
+
+if __name__ == "__main__":
+    main()
