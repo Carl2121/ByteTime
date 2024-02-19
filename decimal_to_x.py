@@ -39,4 +39,3 @@ def to_binary_fraction(fraction):
 
     return binary
 
-print(binary(20.50))
