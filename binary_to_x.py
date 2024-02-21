@@ -1,9 +1,17 @@
-
+from twos_complement import twos_complement
 from typing import Union
+
 def binary_to_decimal(binary:str)-> Union[int, float]:
     # Initialize variables
     integer = binary
     decimal = 0
+
+    # Check if the binary number is negative
+    if binary[0] == '1':
+        binary = twos_complement(binary)
+        is_negative = True
+    else:
+        is_negative = False
 
     # Check if the binary number contains a decimal point
     if '.' in binary:
@@ -26,9 +34,11 @@ def binary_to_decimal(binary:str)-> Union[int, float]:
 
     # If the binary number had a decimal point, add the decimal part to the integer part
     if '.' in binary:
-        return decimal + decimal_point
+        decimal += decimal_point
+
+    # If the binary number was negative, return the negative of the decimal
+    if is_negative:
+        return -decimal
     else:
         return decimal
 
-#
-# print(binary_to_decimal("0010.01"))
