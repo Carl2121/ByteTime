@@ -26,3 +26,5 @@ if __name__ == '__main__':
     binary2 = input("Enter the second binary number: ")
     result = binary_multiplication(binary1, binary2)
     print(result)
+
+#multiply

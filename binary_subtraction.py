@@ -45,3 +45,5 @@ if __name__ == '__main__':
 #Statement4
 #if binary1 is negative and binary2 is positive and
 #di ko alams pls paturo haha
+
+#subtract
