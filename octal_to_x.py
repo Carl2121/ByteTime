@@ -1,4 +1,4 @@
-from Binary_to_X import binary_to_decimal, binary_to_hex
+from binary_to_x import binary_to_decimal, binary_to_hex
 
 
 def octal_to_binary(octal):

@@ -1,7 +1,7 @@
 from twos_complement import twos_complement
-from typing import Union
 
-def binary_to_decimal(binary:str)-> Union[int, float]:
+
+def binary_to_decimal(binary:str)-> int| float:
     # Initialize variables
     integer = binary
     decimal = 0
@@ -41,4 +41,3 @@ def binary_to_decimal(binary:str)-> Union[int, float]:
         return -decimal
     else:
         return decimal
-
