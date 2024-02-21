@@ -12,6 +12,14 @@ def validate_binary_string(binary_str) -> int:
 
     return n
 
+def binary_to_nibble(binary: str = None, bit: int = 4):
+    binary_array = [binary, None] if '.' not in binary else binary.split('.')
+    binary = ' '.join([binary_array[0][max(i-bit, 0):i] for i in range(len(binary_array[0]), 0, -bit)][::-1])
+
+    if binary_array[1] is not None:
+        binary = f'{binary}.{" ".join([binary_array[1][i:i+bit] for i in range(0, len(binary_array[1]), bit)])}'
+    return binary
+
 
 def twos_complement(binary_str: str) -> str:
 
