@@ -29,7 +29,7 @@ def twos_complement(binary_str: str) -> str:
     # perform 2s complement kung walang decimal point
     if decimal_position == -1:
         inverted_str = ''.join('1' if bit == '0' else '0' for bit in binary_str)
-        inverted_int = int(inverted_str, 2)
+        inverted_int = int(inverted_str, 2) #what if i use binary_to_decimal() here?
         twos_complement_int = inverted_int + 1
         twos_complement_str = format(twos_complement_int, '0' + str(n) + 'b')
     else:

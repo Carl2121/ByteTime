@@ -1,6 +1,5 @@
 from binary_to_x import binary_to_decimal, binary_to_octal
 
-
 def hex_to_binary(hexadecimal):
     binary_result = ""
     integer = hexadecimal
@@ -62,6 +61,10 @@ def hex_to_binary(hexadecimal):
     else:
         return binary_result
 
-hexadecimal_number = input("Enter a hexadecimal number: ").upper()
-binary_result = hex_to_binary(hexadecimal_number)
-print(f"Binary: {binary_result} \nDecimal: {binary_to_decimal(binary_result)} \nOctal: {binary_to_octal(binary_result)}")
+def main():
+    hexadecimal_number = input("Enter a hexadecimal number: ").upper()
+    binary_result = hex_to_binary(hexadecimal_number)
+    print(f"Binary: {binary_result} \nDecimal: {binary_to_decimal(binary_result)} \nOctal: {binary_to_octal(binary_result)}")
+
+if __name__ == "__main__":
+    main()

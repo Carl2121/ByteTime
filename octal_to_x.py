@@ -38,6 +38,21 @@ def octal_to_binary(octal):
 
 
 # Example usage:
-octal_number = input("Enter an octal number: ")
-binary_result = octal_to_binary(octal_number)
-print(f"Binary: {binary_result} \nDecimal: {binary_to_decimal(binary_result)} \nHexadecimal: {binary_to_hex(binary_result)}")
+def main():
+    # Prompt the user to enter an octal number
+    octal_number = input("Enter an octal number: ")
+
+    # Convert the octal number to binary
+    binary_result = octal_to_binary(octal_number)
+    print(f"Binary: {binary_result}")
+
+    # Convert the binary number to decimal
+    decimal_result = binary_to_decimal(binary_result)
+    print(f"Decimal: {decimal_result}")
+
+    # Convert the binary number to hexadecimal
+    hex_result = binary_to_hex(binary_result)
+    print(f"Hexadecimal: {hex_result}")
+
+if __name__ == "__main__":
+    main()
