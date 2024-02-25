@@ -1,6 +1,7 @@
 from twos_complement import twos_complement
 
 
+
 def bi_to_dec(binary):
     # Initialize variables
     integer = binary
@@ -46,26 +47,16 @@ def binary_to_octal(binary):
     # Initialize variables
     integer = binary
 
-    if integer[0] == '1':
-        while len(integer) % 3 != 0:
-            integer = '1' + integer
-        integer = '111' + integer
-    else:
-        while len(integer) % 3 != 0:
-            integer = '0' + integer
-        integer = '000' + integer
-
     # Check if the binary number contains a decimal point
     if '.' in binary:
         # If it does, split the binary number into integer and decimal parts
         integer, decimal = integer.split('.')
 
         # Reverse the decimal part of the binary number
-        decimal = decimal[::-1]
 
         # Pad the decimal part with zeros until its length is a multiple of 3
         while len(decimal) % 3 != 0:
-            decimal = '0' + decimal
+            decimal = decimal + '0'
 
         # Initialize a variable to store the octal equivalent of the decimal part
         dec_octal = ''
@@ -76,6 +67,15 @@ def binary_to_octal(binary):
             dec_octal += str(int(bi_to_dec(temp)))
 
     # Pad the integer part with zeros until its length is a multiple of 3
+    if integer[0] == '1':
+        while len(integer) % 3 != 0:
+            integer = '1' + integer
+        if integer[:3] != '111':
+            integer = '111' + integer
+    else:
+        integer = integer.lstrip('0')
+        while len(integer) % 3 != 0:
+            integer = '0' + integer
     # Initialize a variable to store the octal equivalent of the integer part
     octal = ''
 
@@ -124,11 +124,11 @@ def binary_to_hex(binary):
     if integer[0] == '1':
         while len(integer) % 4 != 0:
             integer = '1' + integer
-        integer = '1111' + integer
+        if integer[:4] != '1111':
+            integer = '1111' + integer
     else:
         while len(integer) % 4 != 0:
             integer = '0' + integer
-        integer = '0000' + integer
 
     # Initialize a variable to store the hexadecimal equivalent of the integer part
     hexadecimal = ''
@@ -150,9 +150,3 @@ def binary_to_hex(binary):
         return hexadecimal + '.' + dec_hex
     else:
         return hexadecimal
-
-
-# binary = '1101.101'
-# print(binary_to_decimal(binary))
-# print(binary_to_octal(binary))
-# print(binary_to_hex(binary))

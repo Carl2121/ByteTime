@@ -44,4 +44,3 @@ def binary_to_decimal(binary:str)-> int| float:
 
 
 
-print(binary_to_decimal("11010.01"))

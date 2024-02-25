@@ -78,7 +78,3 @@ def hex_to_octal(hex):
     return binary_to_octal(binary)
 
 
-hex = 'ff6'
-print(hex_to_binary(hex))
-print(hex_to_decimal(hex))
-print(hex_to_octal(hex))

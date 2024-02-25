@@ -91,7 +91,3 @@ def decimal_to_hex(num: float | int) -> str:
 
 
 
-decimal = -16.5
-print(decimal_to_binary_signed(decimal))
-print(decimal_to_octal(decimal))
-print(decimal_to_hex(decimal))

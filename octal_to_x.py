@@ -29,12 +29,17 @@ def octal_to_binary(octal):
     if not binary:
         binary = '0'
 
+    if binary[0] == '1':
+        while len(binary) % 4 != 0:
+            binary = '1' + binary
+    else:
+        while len(binary) % 4 != 0:
+            binary = '0' + binary
+
     if '.' in octal:
-        binary = binary.lstrip('0')
         dec_bi = dec_bi.rstrip('0')
         return binary + '.' + dec_bi
     else:
-        binary = binary.lstrip('0')
         return binary
 
 
@@ -61,10 +66,3 @@ def octal_to_hex(octal):
     else:
         hex = binary_to_hex(binary)
         return hex
-
-
-# Example usage:
-#octal = '75'
-#print(octal_to_binary(octal))
-#print(octal_to_decimal(octal))
-#print(octal_to_hex(octal))

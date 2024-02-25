@@ -44,6 +44,4 @@ def twos_complement(binary_str: str) -> str:
 
     return twos_complement_str
 
-if __name__ == '__main__':
-    val = twos_input()
-    print(twos_complement(val))
+
