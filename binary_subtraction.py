@@ -1,6 +1,6 @@
 from twos_complement import twos_complement, validate_binary_string, binary_to_nibble
 from binary_to_x import binary_to_decimal
-from decimal_to_x import binary
+from decimal_to_x import decimal_to_binary_unsigned
 
 
 def binary_subtraction(binary1:str, binary2:str)-> str:
@@ -14,10 +14,10 @@ def binary_subtraction(binary1:str, binary2:str)-> str:
 
     if result < 0:
         # convert it to its absolute value in binary, then convert back to its two's complement
-        result_binary = twos_complement(binary(abs(result)))
+        result_binary = twos_complement(decimal_to_binary_unsigned(abs(result)))
         result_binary = result_binary.rjust(12, '1')
     else:
-        result_binary = binary(result)
+        result_binary = decimal_to_binary_unsigned(result)
         result_binary = result_binary.zfill(12)
 
     return binary_to_nibble(result_binary)

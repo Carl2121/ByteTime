@@ -1,6 +1,8 @@
 from twos_complement import twos_complement
+from B1nary_to_X import binary_to_octal, binary_to_hex
 
-def binary(num):
+
+def decimal_to_binary_unsigned(num: float | int) -> str:
     if num < 0:
         is_negative = True
         num = -num
@@ -22,6 +24,33 @@ def binary(num):
         return f'{binary_whole}.{binary_fraction}'
     else:
         return f"{binary_whole}"
+
+def decimal_to_binary_signed(num: float | int) -> str:
+    if num < 0:
+        is_negative = True
+        num = -num
+    else:
+        is_negative = False
+
+    whole = int(num)
+    fraction = num - whole
+
+    binary_whole = to_binary_whole(whole)
+    binary_fraction = to_binary_fraction(fraction)
+
+    binary_number = binary_whole
+    if binary_fraction:
+        binary_number += '.' + binary_fraction
+
+    if is_negative:
+        binary_number = twos_complement(binary_number)
+        while len(binary_number) % 4 != 0:
+            binary_number = '1' + binary_number
+    else:
+        while len(binary_number) % 4 != 0:
+            binary_number = '0' + binary_number
+
+    return binary_number
 
 def to_binary_whole(num):
     binary_array = []
@@ -49,3 +78,20 @@ def to_binary_fraction(fraction):
         max_iterations -= 1
 
     return binary
+
+def decimal_to_octal(num: float | int) -> str:
+    binary = decimal_to_binary_signed(num)
+    return binary_to_octal(binary)
+
+def decimal_to_hex(num: float | int) -> str:
+    binary = decimal_to_binary_signed(num)
+    return binary_to_hex(binary)
+
+
+
+
+
+decimal = -16.5
+print(decimal_to_binary_signed(decimal))
+print(decimal_to_octal(decimal))
+print(decimal_to_hex(decimal))

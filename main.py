@@ -1,3 +1,6 @@
+import binary_addition, binary_subtraction, binary_multiplication, binary_division
+
+
 def main():
     while True:
         print("\nMain Menu:")

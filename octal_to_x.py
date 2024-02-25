@@ -1,12 +1,13 @@
-from binary_to_x import binary_to_decimal, binary_to_hex
+from B1nary_to_X import binary_to_decimal, binary_to_hex
+from twos_complement import twos_complement
 
 
 def octal_to_binary(octal):
     binary = ""
     integer = octal
 
-    if '.' in octal:
-        integer, decimal = octal.split('.')
+    if '.' in integer:
+        integer, decimal = integer.split('.')
         dec_bi = ""
         for x in decimal:
             digit = ""
@@ -37,22 +38,33 @@ def octal_to_binary(octal):
         return binary
 
 
+def octal_to_decimal(octal):
+    binary = octal_to_binary(octal)
+    if octal[0] == '7':
+        decimal = -binary_to_decimal(twos_complement(binary))
+        return decimal
+    else:
+        decimal = binary_to_decimal(binary)
+        return decimal
+
+
+def octal_to_hex(octal):
+    binary = octal_to_binary(octal)
+
+    if octal[0] == '7':
+        while len(binary) % 4 != 0:
+            binary = '1' + binary
+
+        hex = binary_to_hex(binary)
+        return hex
+
+    else:
+        hex = binary_to_hex(binary)
+        return hex
+
+
 # Example usage:
-def main():
-    # Prompt the user to enter an octal number
-    octal_number = input("Enter an octal number: ")
-
-    # Convert the octal number to binary
-    binary_result = octal_to_binary(octal_number)
-    print(f"Binary: {binary_result}")
-
-    # Convert the binary number to decimal
-    decimal_result = binary_to_decimal(binary_result)
-    print(f"Decimal: {decimal_result}")
-
-    # Convert the binary number to hexadecimal
-    hex_result = binary_to_hex(binary_result)
-    print(f"Hexadecimal: {hex_result}")
-
-if __name__ == "__main__":
-    main()
+#octal = '75'
+#print(octal_to_binary(octal))
+#print(octal_to_decimal(octal))
+#print(octal_to_hex(octal))

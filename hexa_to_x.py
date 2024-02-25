@@ -1,4 +1,6 @@
-from binary_to_x import binary_to_decimal, binary_to_octal
+from B1nary_to_X import binary_to_decimal, binary_to_octal
+from twos_complement import twos_complement
+
 
 def hex_to_binary(hexadecimal):
     binary_result = ""
@@ -6,8 +8,8 @@ def hex_to_binary(hexadecimal):
     hex_chars = "0123456789ABCDEF"
     hex_values = {}
 
-    if '.' in hexadecimal:
-        integer, decimal = hexadecimal.split('.')
+    if '.' in integer:
+        integer, decimal = integer.split('.')
         hexa_dec = ""
         for i in range(len(hex_chars)):
             hex_values[hex_chars[i]] = i
@@ -53,18 +55,30 @@ def hex_to_binary(hexadecimal):
 
         binary_result += binary_digit
 
-    binary_result = binary_result.lstrip('0')
-
     if '.' in hexadecimal:
+        binary_result = binary_result.lstrip('0')
         hexa_dec = hexa_dec.rstrip("0")
         return binary_result + '.' + hexa_dec
     else:
+        binary_result = binary_result.lstrip('0')
         return binary_result
 
-def main():
-    hexadecimal_number = input("Enter a hexadecimal number: ").upper()
-    binary_result = hex_to_binary(hexadecimal_number)
-    print(f"Binary: {binary_result} \nDecimal: {binary_to_decimal(binary_result)} \nOctal: {binary_to_octal(binary_result)}")
 
-if __name__ == "__main__":
-    main()
+def hex_to_decimal(hex):
+    binary = hex_to_binary(hex)
+    if binary[0] == '1':
+        return -binary_to_decimal(twos_complement(binary))
+    else:
+        return binary_to_decimal(binary)
+
+
+def hex_to_octal(hex):
+    binary = hex_to_binary(hex)
+
+    return binary_to_octal(binary)
+
+
+hex = 'ff6'
+print(hex_to_binary(hex))
+print(hex_to_decimal(hex))
+print(hex_to_octal(hex))
