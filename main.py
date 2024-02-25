@@ -51,8 +51,8 @@ def main():
                 print("[1] Binary to X")
                 print("[2] Decimal to X")
                 print("[3] Octal to X")
-                print("[5] Hexa to X")
-                print("[6] Back to Main Menu")
+                print("[4] Hexa to X")
+                print("[5] Back to Main Menu")
 
                 choice = input("\nPlease choose an option: ")
 
