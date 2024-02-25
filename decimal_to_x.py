@@ -25,32 +25,18 @@ def decimal_to_binary_unsigned(num: float | int) -> str:
     else:
         return f"{binary_whole}"
 
+
 def decimal_to_binary_signed(num: float | int) -> str:
     if num < 0:
-        is_negative = True
-        num = -num
+        num = abs(num)
+        bin = decimal_to_binary_unsigned(num)
+        bin = twos_complement(bin)
+        bin = bin.rjust(24, '1')
+        return bin
     else:
-        is_negative = False
-
-    whole = int(num)
-    fraction = num - whole
-
-    binary_whole = to_binary_whole(whole)
-    binary_fraction = to_binary_fraction(fraction)
-
-    binary_number = binary_whole
-    if binary_fraction:
-        binary_number += '.' + binary_fraction
-
-    if is_negative:
-        binary_number = twos_complement(binary_number)
-        while len(binary_number) % 4 != 0:
-            binary_number = '1' + binary_number
-    else:
-        while len(binary_number) % 4 != 0:
-            binary_number = '0' + binary_number
-
-    return binary_number
+        bin = decimal_to_binary_unsigned(num)
+        bin = bin.rjust(24, '0')
+        return bin
 
 def to_binary_whole(num):
     binary_array = []
@@ -86,8 +72,6 @@ def decimal_to_octal(num: float | int) -> str:
 def decimal_to_hex(num: float | int) -> str:
     binary = decimal_to_binary_signed(num)
     return binary_to_hex(binary)
-
-
 
 
 

@@ -150,3 +150,5 @@ def binary_to_hex(binary):
         return hexadecimal + '.' + dec_hex
     else:
         return hexadecimal
+
+
